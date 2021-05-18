@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\Doctor;
-use App\Models\Hospital;
+use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Comment\Doc;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +17,7 @@ use PhpParser\Comment\Doc;
 
 
 
-Route::get('/',[Hospital::class, 'index'])->name('/');
+Route::get('/',[HospitalController::class, 'index']);
 
 
 // Route::get('/', function () {
