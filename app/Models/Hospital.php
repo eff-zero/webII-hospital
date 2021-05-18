@@ -9,6 +9,14 @@ class Hospital extends Model
 {
     use HasFactory;
 
+    // protected $fillable = [
+    //     'name',
+    //     'adress',
+    //     'phone'
+    // ];
+
+    protected $guarded = ['_token']; // Asignacion masiva para agregar el hospital
+
     public function doctors(){
         return $this->hasMany(Doctor::class);
     }

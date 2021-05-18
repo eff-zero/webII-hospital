@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class HospitalController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('onehospital')->only('index'); // Middleware de la validacion del hpsital solo para
+                                                         // el metodo index del hospital
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('hospital.index');
     }
 
     /**
@@ -34,8 +40,9 @@ class HospitalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {       
+        Hospital::create($request->all()); // Agregar hospital por medio del formulario con el $request[POST]
+        // return view('home'); // Ya registrado el hospital nos vamos a la vista de los medicos
     }
 
     /**
