@@ -13,8 +13,8 @@
         <title>@yield('title')</title>      
     </head>
     <body>
-        <div class="container">
+            @include('partials.header') <!-- PARTIAL DEL HEADER -->
             @yield('content') 
-        </div>       
+            @include('partials.footer') <!-- PARTIAL DEL FOOTER -->
     </body>
 </html>

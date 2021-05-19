@@ -10,8 +10,8 @@ class HospitalController extends Controller
 
     public function __construct()
     {
-        $this->middleware('onehospital')->only('index'); // Middleware de la validacion del hpsital solo para
-                                                         // el metodo index del hospital
+        $this->middleware('onehospital')->only('hospital.create'); // MIDDLEWARE LA VALIDAR UN SOLO HOSPITAL [NO SE PUEDE PUEDE ACCEDER A LA RUTA '/hospital/create']
+                                                        
     }
     /**
      * Display a listing of the resource.
@@ -30,7 +30,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+        return view('hospital.create');
     }
 
     /**
