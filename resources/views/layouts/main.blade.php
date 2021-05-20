@@ -13,8 +13,28 @@
         <title>@yield('title')</title>      
     </head>
     <body>
-            @include('partials.header') <!-- PARTIAL DEL HEADER -->
+            <x-header> <!-- COMPONENTE DEL HEADER -->
+                <x-slot name="color"> 
+                    @php
+                        if (request()->routeIs('hospital.*')) { #LOGICA PARA ELEGIR COLOR SEGUN URL
+                            echo '#533B78';
+                        } else if (request()->routeIs('patient.*')) {
+                            echo '#154360';
+                        } else if (request()->routeIs('doctor.*')) {
+                            echo '#117864';
+                        } else {
+                            echo '#533B78';
+                        }
+                    @endphp
+                </x-slot> <!-- SLOT PARA COLOR DEL HEADER -->
+            </x-header>
+
             @yield('content') 
-            @include('partials.footer') <!-- PARTIAL DEL FOOTER -->
+
+            <x-footer>
+                <x-slot name="texto">
+                    <h4 class="font-weight-normal text-center"> Proyecto Final Desarollo Web II </h4>
+                </x-slot>
+            </x-footer>
     </body>
 </html>

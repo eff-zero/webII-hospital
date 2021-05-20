@@ -20,6 +20,8 @@ Route::view('/', 'inicio');
 // Route::post('hospital', [HospitalController::class, 'store'])->name('hospital.store');
 
 Route::resource('hospital', HospitalController::class);
+Route::resource('doctor', HospitalController::class);
+Route::resource('patient', HospitalController::class);
 
 // Route::get('middleware', function () {
 //     return 'funcionando';
