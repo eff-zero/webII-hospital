@@ -6,7 +6,7 @@
 
 
     <div class="container text-center pt-5 pb-5">
-        <a href="{{ route('hospital.create') }}" class="btn btn-lg text-white" style="background-color: #533B78"> ¿Desea registrar su hospital? </a>
+        <a href="{{ route('hospital.index') }}" class="btn btn-lg text-white" style="background-color: #533B78"> Ir a Hospital </a>
     </div>
     
 

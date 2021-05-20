@@ -25,7 +25,7 @@
                         <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
     
                         <div class="col-md-7">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                         </div>
                     </div>
     
@@ -41,7 +41,7 @@
                         <label for="phone" class="col-md-3 col-form-label text-md-right"> Telefono: </label>
     
                         <div class="col-md-7">
-                            <input id="phone" type="text" class="form-control" name="phone" value="{{ old('name') }}" required autofocus>
+                            <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                             <button type="submit" class="btn btn-outline-dark"> Registrar </button>
                         </div>
                         <div class="col">
-                            <a href="/" class="btn btn-outline-dark"> Volver </a>
+                            <a href="{{ route('hospital.index') }}" class="btn btn-outline-dark"> Volver </a>
                         </div>
                     </div>
     

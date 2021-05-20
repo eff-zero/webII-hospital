@@ -10,7 +10,7 @@ class HospitalController extends Controller
 
     public function __construct()
     {
-        $this->middleware('onehospital')->only('hospital.create'); // MIDDLEWARE LA VALIDAR UN SOLO HOSPITAL [NO SE PUEDE PUEDE ACCEDER A LA RUTA '/hospital/create']
+        $this->middleware('onehospital')->only(['create', 'store']); // MIDDLEWARE LA VALIDAR UN SOLO HOSPITAL [NO SE PUEDE PUEDE ACCEDER A LA RUTA '/hospital/create']
                                                         
     }
     /**
@@ -20,7 +20,9 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        return view('hospital.index');
+        // dd(count(Hospital::all()) ? 'TRUE' : 'FALSE');
+        $hospitals = Hospital::all(); // Obtenemos los hospitales
+        return view('hospital.index', compact('hospitals')); // Se envian por 'compact'
     }
 
     /**
@@ -42,7 +44,7 @@ class HospitalController extends Controller
     public function store(Request $request)
     {       
         Hospital::create($request->all()); // Agregar hospital por medio del formulario con el $request[POST]
-        // return view('home'); // Ya registrado el hospital nos vamos a la vista de los medicos
+        return redirect()->route('hospital.index'); // Ya registrado el hospital nos vamos a la vista de los medicos
     }
 
     /**
@@ -64,7 +66,7 @@ class HospitalController extends Controller
      */
     public function edit(Hospital $hospital)
     {
-        //
+        return view('hospital.edit', compact('hospital')); // Apartado para editar hospital
     }
 
     /**
@@ -76,7 +78,8 @@ class HospitalController extends Controller
      */
     public function update(Request $request, Hospital $hospital)
     {
-        //
+        $hospital->update($request->all());
+        return redirect()->route('hospital.index');
     }
 
     /**
@@ -87,6 +90,7 @@ class HospitalController extends Controller
      */
     public function destroy(Hospital $hospital)
     {
-        //
+        $hospital->delete();
+        return redirect()->route('hospital.index');
     }
 }

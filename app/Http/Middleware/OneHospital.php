@@ -20,8 +20,7 @@ class OneHospital
         $hospitalisEmpty = Hospital::first();
 
         if (!empty($hospitalisEmpty)) {
-            return redirect()->route('hospital.edit' , $hospitalisEmpty->id); // Si existe un hospital nos redirige a 
-                                                                              // donde podamos eliminarlo o editarlo
+            return redirect()->route('hospital.index'); // Si existe un hospital nos redirige a nuestro index.hospital
         }     
 
         return $next($request);
