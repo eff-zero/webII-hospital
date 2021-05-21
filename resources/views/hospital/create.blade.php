@@ -7,10 +7,11 @@
 
 
 @section('content')
-    <div class="pt-5 container">
+    <div class="py-5 container">
         <x-card>
             <x-slot name="colorheader"> #533B78 </x-slot>
-            <x-slot name="colortext">   white   </x-slot>
+            <x-slot name="colortext"> white </x-slot>
+            <x-slot name="width"> 30rem </x-slot>
 
             <x-slot name="header">
                 <h4 class="my-0 font-weight-normal text-center"> Registro de Hospital  </h4>

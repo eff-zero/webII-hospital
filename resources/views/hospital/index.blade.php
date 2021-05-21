@@ -3,16 +3,17 @@
 
 @section('content')
 
-<div class="container pt-5">
+<div class="container py-5">
 
     <x-card>
-        <x-slot name="colorheader"> </x-slot>
-        <x-slot name="colortext"> </x-slot>
+        <x-slot name="colorheader"> {{ count($hospitals) ? '#a9e159' : ' #FF4040' }}  </x-slot> <!-- color para header de la carta -->
+        <x-slot name="colortext"> white </x-slot> <!-- color para el texto del header de la carta -->
+        <x-slot name="width"> 30rem </x-slot> <!-- color para el texto del header de la carta -->
 
         <x-slot name="header">
             <h4 class="my-0 font-weight-normal text-center"> 
                 ESTADO DEL HOSPITAL:  
-                <small class="text-muted"> 
+                <small> 
                     {{ count($hospitals) ? 'REGISTRADO' : 'NO REGISTRADO' }}
                 </small>  
             </h4>
@@ -28,12 +29,13 @@
                 </div> <hr>
 
                 <div class="container text-center">
-                    <a href="" class="btn btn-outline-dark m-2 col-md-4 col-sm-12   "> Ver Doctores </a> 
-                    <a href="{{ route('hospital.edit', $hospital) }}" class="btn btn-outline-dark m-2 col-md-4 col-sm-12    "> Editar </a>
+                    
+                    
 
                     <form action="{{ route('hospital.destroy' , $hospital) }}" method="post">
                         @csrf
                         @method('delete')
+                        <a href="{{ route('hospital.edit', $hospital) }}" class="btn btn-outline-dark m-2 col-md-4 col-sm-12"> Editar </a> <!-- Dentro del formulario para alinearlo con el boton de eliminar -->
                         {{-- <a href="" class="btn btn-outline-dark m-2 col-md-4 col-sm-12 {{ count($hospitals) ? '' : 'disabled' }}"    > Eliminar </a> --}}
                         <button class="btn btn-outline-dark m-2 col-md-4 col-sm-12"> Eliminar </button>
                     </form>                                          
@@ -41,7 +43,7 @@
             @endforeach
             
             <div class="container text-center">
-                <a href="{{ route('hospital.create') }}" class="btn btn-outline-dark m-2 col-md-4 col-sm-12 {{ count($hospitals) ? 'disabled' : '' }}"> Registar </a>
+                <a href="{{ route('hospital.create') }}" class="btn btn-outline-dark m-2 col-md-4 col-sm-12 {{ count($hospitals) ? 'disabled' : '' }}"> Registrar </a>
                 <a href="/" class="btn btn-outline-dark m-2 col-md-4 col-sm-12"> Atras </a>
             </div>  
 

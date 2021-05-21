@@ -29,6 +29,8 @@
                 </x-slot> <!-- SLOT PARA COLOR DEL HEADER -->
             </x-header>
 
+            <x-nav />
+
             @yield('content') 
 
             <x-footer>

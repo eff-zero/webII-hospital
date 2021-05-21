@@ -6,7 +6,7 @@ use App\Models\Hospital;
 use Closure;
 use Illuminate\Http\Request;
 
-class OneHospital
+class DocPat
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,13 @@ class OneHospital
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {    
+    {
         $anyHospital = Hospital::first();
 
         if ($anyHospital) {
-            return redirect()->route('hospital.index'); // Si existe un hospital nos redirige a nuestro index.hospital
-        }     
+            return $next($request);
+        }
 
-        return $next($request);
+        return redirect()->route('hospital.index');
     }
 }

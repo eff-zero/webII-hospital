@@ -63,7 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'onehospital' => \App\Http\Middleware\OneHospital::class // Registro del Middleware para no poder 
-                                                                 // registrar mas de un hospital           
+        'onehospital' => \App\Http\Middleware\OneHospital::class, // Registro del Middleware para no poder registrar mas de un hospital           
+        'DocPat' => \App\Http\Middleware\DocPat::class
     ];
 }

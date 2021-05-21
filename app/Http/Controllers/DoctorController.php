@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Hospital;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -12,9 +13,17 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function __construct()
     {
-        //
+        $this->middleware('DocPat')->only(['index', 'create', 'store']);
+    }
+    
+
+    public function index()
+    {       
+        $doctors = Doctor::orderBy('id', 'desc')->get();
+        return view('doctor.index', compact('doctors'));
     }
 
     /**
@@ -23,8 +32,9 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $hospitals = Hospital::all();
+        return view('doctor.create', compact('hospitals'));
     }
 
     /**
@@ -35,7 +45,8 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Doctor::create($request->all());
+        return redirect()->route('doctor.index');
     }
 
     /**
@@ -46,7 +57,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        return view('doctor.show', compact('doctor'));
     }
 
     /**
@@ -57,7 +68,8 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        $hospitals = Hospital::all();
+        return view('doctor.edit', compact('hospitals', 'doctor'));
     }
 
     /**
@@ -69,7 +81,8 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
-        //
+        $doctor->update($request->all());
+        return redirect()->route('doctor.index');   
     }
 
     /**
@@ -80,6 +93,7 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->delete();
+        return redirect()->route('doctor.index');
     }
 }

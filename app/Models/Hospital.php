@@ -15,7 +15,7 @@ class Hospital extends Model
     //     'phone'
     // ];
 
-    protected $guarded = ['_token']; // Asignacion masiva para agregar el hospital
+    protected $guarded = []; // Asignacion masiva para agregar el hospital
 
     public function doctors(){
         return $this->hasMany(Doctor::class);

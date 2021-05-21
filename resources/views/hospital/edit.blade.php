@@ -6,6 +6,7 @@
     <x-card>
         <x-slot name="colorheader"> </x-slot>
         <x-slot name="colortext">  </x-slot>
+        <x-slot name="width"> 30rem </x-slot>
 
         <x-slot name="header">
             <h4 class="my-0 font-weight-normal text-center text-muted"> Editar Hospital  </h4>

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,9 +21,10 @@ Route::view('/', 'inicio');
 // Route::get('hospital',[HospitalController::class, 'index'])->middleware('onehospital'); // Middleware para la validacion de un solo hospital
 // Route::post('hospital', [HospitalController::class, 'store'])->name('hospital.store');
 
+
 Route::resource('hospital', HospitalController::class);
-Route::resource('doctor', HospitalController::class);
-Route::resource('patient', HospitalController::class);
+Route::resource('doctor', DoctorController::class);
+Route::resource('patient', PatientController::class);
 
 // Route::get('middleware', function () {
 //     return 'funcionando';
