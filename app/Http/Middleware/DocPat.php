@@ -23,6 +23,6 @@ class DocPat
             return $next($request);
         }
 
-        return redirect()->route('hospital.index');
+        return redirect()->route('hospital.index'); // Si no existe un hospital no se puede acceder al apartado de los pacientes y de los doctores 
     }
 }

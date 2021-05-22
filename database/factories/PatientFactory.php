@@ -25,11 +25,13 @@ class PatientFactory extends Factory
             'doctor_id' => $this->faker->numberBetween(1 , 30),
             'name' => $this->faker->name(),
             'adress' => $this->faker->randomElement([$this->faker->bothify("Calle ## No ##-##"), $this->faker->bothify("Carrera ## No ##-##")]),
-            'eps' => 'SURA',
+            'eps' => $this->faker->randomElement(['SURA', 'COOMEVA', 'SUSALUD', 'VIVA1A']), // Se agregaron mas EPS al factory
             'comp_name' => $this->faker->name(),
             'comp_phone' => $this->faker->bothify('3#########'),
             'diagnosis' => $this->faker->paragraph(),
-            'covid' => $this->faker->numberBetween(0, 1)
+            'covid' => $this->faker->numberBetween(0, 1),
+            'med_history' => $this->faker->paragraph(),
+            'reasons' => $this->faker->paragraph()
         ];
     }
 }

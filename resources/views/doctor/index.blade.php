@@ -7,7 +7,7 @@
             
     @section('content')
         <div class="container text-center pt-3">
-            <a href="{{ route('doctor.create') }}" class="btn btn-outline-dark btn-lg btn-block"> Registrar nuevo doctor </a>
+            <a href="{{ route('doctor.create') }}" class="btn btn-outline-dark btn-lg btn-block text-uppercase"> Registrar nuevo doctor </a>
         </div>   
             <div class="row">
                 @foreach ($doctors as $doctor) 

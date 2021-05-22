@@ -9,6 +9,8 @@ class Patient extends Model
 {
     use HasFactory;
 
+    protected $guarded = []; // Asignacion masiva
+
     public function doctor(){
         return $this->belongsTo(Doctor::class);
     }

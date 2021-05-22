@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,16 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('DocPat')->only(['index', 'create', 'store']); // Uso del middleware [ir a el para ver explicacion] 
+    }
+
     public function index()
     {
-        //
+        $patients = Patient::orderBy('id', 'desc')->get();
+        return view('patient.index' , compact('patients'));
     }
 
     /**
@@ -23,8 +31,9 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $doctors = Doctor::orderBy('id' , 'desc')->get();
+        return view('patient.create', compact('doctors'));
     }
 
     /**
@@ -35,7 +44,8 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Patient::create($request->all());
+        return redirect()->route('patient.index');
     }
 
     /**
@@ -46,7 +56,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        return view('patient.show', compact('patient'));
     }
 
     /**
@@ -57,7 +67,8 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $doctors = Doctor::all();
+        return view('patient.edit', compact('patient', 'doctors'));
     }
 
     /**
@@ -69,7 +80,8 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $patient->update($request->all());
+        return redirect()->route('patient.index');
     }
 
     /**
@@ -80,6 +92,7 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+        return redirect()->route('patient.index');
     }
 }

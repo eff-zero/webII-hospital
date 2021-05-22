@@ -11,7 +11,7 @@
             <x-slot name="width"> 45rem </x-slot>
 
             <x-slot name="header">
-                <h4 class="my-0 font-weight-normal text-center"> Registro de Doctores  </h4>
+                <h4 class="my-0 font-weight-normal text-center text-uppercase"> Registro de Doctores  </h4>
             </x-slot>
 
             <x-slot name="body">

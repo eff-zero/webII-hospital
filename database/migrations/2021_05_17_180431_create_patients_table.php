@@ -25,6 +25,8 @@ class CreatePatientsTable extends Migration
             $table->string('eps');
             $table->string('comp_name');
             $table->bigInteger('comp_phone');
+            $table->text('med_history')->nullable(true); //Faltaba
+            $table->text('reasons'); //Faltaba
             $table->text('diagnosis');
             $table->boolean('covid');
             $table->timestamps();
