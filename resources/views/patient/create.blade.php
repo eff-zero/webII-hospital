@@ -6,7 +6,7 @@
     @section('content')
     <div class="pt-5 container">
 
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <div class="alert alert-danger" role="alert">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -14,7 +14,9 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
+
+        <!-- Se colocaron los errores individualmente para mas estetica -->
 
         <form action="{{ route('patient.store') }}" method="post">
             @csrf
@@ -38,6 +40,9 @@
             
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                    @error('name')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
             
@@ -46,6 +51,9 @@
             
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" autofocus>
+                                    @error('adress')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -68,6 +76,9 @@
             
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="comp_name" value="{{ old('comp_name') }}" autofocus>
+                                    @error('comp_name')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -76,6 +87,9 @@
             
                                 <div class="col-md-7">
                                     <input type="text" class="form-control" name="comp_phone" value="{{ old('comp_phone') }}" autofocus>
+                                    @error('comp_phone')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                                 </div>
                             </div>
 
@@ -111,14 +125,23 @@
                             <div class="form-group">
                                 <label for="my-textarea"> Historial Medico o Antecedentes </label>
                                 <textarea id="my-textarea" class="form-control" name="med_history" rows="2"></textarea>
+                                @error('med_history')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="my-textarea"> Motivos de la Consulta </label>
                                 <textarea id="my-textarea" class="form-control" name="reasons" rows="2"></textarea>
+                                @error('reasons')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="my-textarea"> Diagnostico </label>
                                 <textarea id="my-textarea" class="form-control" name="diagnosis" rows="2"></textarea>
+                                @error('diagnosis')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                             </div>
 
                         </x-slot>

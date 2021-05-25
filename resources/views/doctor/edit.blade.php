@@ -24,7 +24,10 @@
                         <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="name" value="{{ old('name', $doctor->name) }}" required autofocus>
+                            <input type="text" class="form-control" name="name" value="{{ old('name', $doctor->name) }}" autofocus>
+                            @error('name')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
     
@@ -32,7 +35,10 @@
                         <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="adress" value="{{ old('adress', $doctor->adress) }}" required autofocus>
+                            <input type="text" class="form-control" name="adress" value="{{ old('adress', $doctor->adress) }}" autofocus>
+                            @error('adress')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
     
@@ -40,7 +46,10 @@
                         <label for="phone" class="col-md-3 col-form-label text-md-right"> Telefono: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="phone" value="{{ old('phone', $doctor->phone) }}" required autofocus>
+                            <input type="text" class="form-control" name="phone" value="{{ old('phone', $doctor->phone) }}" autofocus>
+                            @error('phone')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
 
@@ -48,7 +57,10 @@
                         <label for="type_blood" class="col-md-3 col-form-label text-md-right"> Sangre: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="type_blood" value="{{ old('type_blood', $doctor->type_blood) }}" required autofocus>
+                            <input type="text" class="form-control" name="type_blood" value="{{ old('type_blood', $doctor->type_blood) }}" autofocus>
+                            @error('type_blood')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>   
                     
@@ -56,7 +68,10 @@
                         <label for="years_exp" class="col-md-3 col-form-label text-md-right"> Años de Experiencia: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="years_exp" value="{{ old('years_exp', $doctor->years_exp) }}" required autofocus>
+                            <input type="text" class="form-control" name="years_exp" value="{{ old('years_exp', $doctor->years_exp) }}" autofocus>
+                            @error('years_exp')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
 
@@ -64,7 +79,10 @@
                         <label for="date" class="col-md-3 col-form-label text-md-right"> Fecha de Nacimiento: </label>
     
                         <div class="col-md-7">
-                            <input type="date" class="form-control" name="date" value="{{ old('date', $doctor->date) }}" required autofocus>
+                            <input type="date" class="form-control" name="date" value="{{ old('date', $doctor->date) }}" autofocus>
+                            @error('date')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
 

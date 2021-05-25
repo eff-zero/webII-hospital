@@ -27,7 +27,10 @@
                                 <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="name" value="{{ old('name', $patient->name) }}" required autofocus>
+                                    <input type="text" class="form-control" name="name" value="{{ old('name', $patient->name) }}" autofocus>
+                                    @error('name')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
             
@@ -35,7 +38,10 @@
                                 <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="adress" value="{{ old('adress', $patient->adress) }}" required autofocus>
+                                    <input type="text" class="form-control" name="adress" value="{{ old('adress', $patient->adress) }}" autofocus>
+                                    @error('adress')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -57,7 +63,10 @@
                                 <label for="adress" class="col-md-3 col-form-label text-md-right"> Nombre del Acompañante: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="comp_name" value="{{ old('comp_name' ,$patient->comp_name) }}" required autofocus>
+                                    <input type="text" class="form-control" name="comp_name" value="{{ old('comp_name' ,$patient->comp_name) }}" autofocus>
+                                    @error('comp_name')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -65,7 +74,10 @@
                                 <label for="adress" class="col-md-3 col-form-label text-md-right"> Tel. Acompañante: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="comp_phone" value="{{ old('comp_phone' , $patient->comp_phone) }}" required autofocus>
+                                    <input type="text" class="form-control" name="comp_phone" value="{{ old('comp_phone' , $patient->comp_phone) }}" autofocus>
+                                    @error('comp_phone')
+                                        <small class="text-muted"> * {{ $message }} </small>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -100,14 +112,23 @@
                             <div class="form-group">
                                 <label for="my-textarea"> Historial Medico o Antecedentes </label>
                                 <textarea id="my-textarea" class="form-control" name="med_history" rows="2"> {{ old('med_history', $patient->med_history) }} </textarea>
+                                @error('med_history')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="my-textarea"> Motivas de la Consulta </label>
                                 <textarea id="my-textarea" class="form-control" name="reasons" rows="2"> {{ old('reasons', $patient->reasons) }} </textarea>
+                                @error('reasons')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="my-textarea"> Diagnostico </label>
                                 <textarea id="my-textarea" class="form-control" name="diagnosis" rows="2"> {{ old('diagnosis', $patient->diagnosis) }} </textarea>
+                                @error('diagnosis')
+                                    <small class="text-muted"> * {{ $message }} </small>
+                                @enderror
                             </div>
 
                         </x-slot>
