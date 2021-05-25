@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HospitalRequest;
 use App\Models\Hospital;
-use Illuminate\Http\Request;
+
 
 class HospitalController extends Controller
 {
@@ -41,13 +42,8 @@ class HospitalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {       
-        $validated = $request->validate([
-            'name' => 'required|unique:hospital|',
-            'adress' => 'required|unique:hospital|',
-            'phone' => 'required|unique:hospital|',
-        ]);
+    public function store(HospitalRequest $request) // FormRequest [app/Request]
+    {             
         Hospital::create($request->all()); // Agregar hospital por medio del formulario con el $request[POST]
         return redirect()->route('hospital.index'); // Ya registrado el hospital nos vamos a la vista de los medicos
     }
@@ -81,7 +77,7 @@ class HospitalController extends Controller
      * @param  \App\Models\Hospital  $hospital
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hospital $hospital)
+    public function update(HospitalRequest $request, Hospital $hospital)
     {
         $hospital->update($request->all());
         return redirect()->route('hospital.index');

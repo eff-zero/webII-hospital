@@ -15,7 +15,7 @@
             </x-slot>
 
             <x-slot name="body">
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -23,7 +23,9 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
+
+                <!-- Se colocaron los errores individualmente para mas estetica -->
 
                 <form method="POST" action="{{ route('doctor.store') }}">
                     @csrf
@@ -33,6 +35,9 @@
     
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                            @error('name')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
     
@@ -41,6 +46,9 @@
     
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" autofocus>
+                            @error('adress')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
     
@@ -49,6 +57,9 @@
     
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" autofocus>
+                            @error('phone')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
 
@@ -57,6 +68,9 @@
     
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="type_blood" value="{{ old('type_blood') }}" autofocus>
+                            @error('type_blood')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>   
                     
@@ -65,6 +79,9 @@
     
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="years_exp" value="{{ old('years_exp') }}" autofocus>
+                            @error('years_exp')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
 
@@ -73,6 +90,9 @@
     
                         <div class="col-md-7">
                             <input type="date" class="form-control" name="date" value="{{ old('date') }}" autofocus>
+                            @error('date')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
 

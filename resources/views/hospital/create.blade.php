@@ -20,7 +20,7 @@
 
             <x-slot name="body">
 
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     <div class="alert alert-danger" role="alert">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -28,33 +28,47 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
 
-                <form method="POST" action="{{ route('hospital.store') }}">  
+                <!-- Se colocaron los errores individualmente para mas estetica -->
+
+                <form method="POST" action="{{ route('hospital.store') }}">
                     @csrf
-    
+
                     <div class="form-group row">
                         <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
-    
+
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                            @error('name')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
+                        
                     </div>
-    
-                    <div class="form-group row"> 
+                    
+
+                    <div class="form-group row">
                         <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
-    
+
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" autofocus>
+                            @error('adress')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
                     </div>
-    
+
                     <div class="form-group row">
                         <label for="phone" class="col-md-3 col-form-label text-md-right"> Telefono: </label>
-    
+
                         <div class="col-md-7">
                             <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" autofocus>
+                            @error('phone')
+                                <small class="text-muted"> * {{ $message }} </small>
+                            @enderror
                         </div>
+                        
                     </div>
 
                     <div class="container row">
@@ -65,11 +79,11 @@
                             <a href="{{ route('hospital.index') }}" class="btn btn-outline-dark"> Volver </a>
                         </div>
                     </div>
-    
+
                     {{-- <div class="form-group row mb-0">
                         <div class="col-md-1 offset-md-3">
                             <button type="submit" class="btn btn-outline-dark">
-                                Registrar 
+                                Registrar
                             </button>
                         </div>
                     </div>    --}}
@@ -77,5 +91,5 @@
 
             </x-slot>
         </x-card>
-    </div>   
+    </div>
 @endsection

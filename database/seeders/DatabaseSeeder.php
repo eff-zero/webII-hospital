@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Hospital::factory()->create();
-        Doctor::factory(30)->create(['hospital_id' => 1]);
+        Doctor::factory(30)->create(['hospital_id' => Hospital::first()]);
         Patient::factory(50)->create();
     }
 }

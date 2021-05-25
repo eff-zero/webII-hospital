@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use Illuminate\Http\Request;
@@ -43,16 +44,8 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DoctorRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|unique:doctor|',
-            'adress' => 'required',
-            'phone' => 'required',
-            'years_exp' => 'required',
-            'date' => 'required',
-        ]);
-
         Doctor::create($request->all());
         return redirect()->route('doctor.index');
     }
@@ -87,7 +80,7 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(DoctorRequest $request, Doctor $doctor)
     {
         $doctor->update($request->all());
         return redirect()->route('doctor.index');   

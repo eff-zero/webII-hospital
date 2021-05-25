@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PatientRequest;
 use App\Models\Doctor;
 use App\Models\Patient;
-use Illuminate\Http\Request;
+
 
 class PatientController extends Controller
 {
@@ -42,17 +43,8 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatientRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'adress' => 'required',
-            'comp_name' => 'required',
-            'comp_phone' => 'required',
-            'med_history' => 'required',
-            'reasons' => 'required',
-            'diagnosis' => 'required',
-        ]);
         Patient::create($request->all());
         return redirect()->route('patient.index');
     }
@@ -87,7 +79,7 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(PatientRequest $request, Patient $patient)
     {
         $patient->update($request->all());
         return redirect()->route('patient.index');

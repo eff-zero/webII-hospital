@@ -22,15 +22,22 @@
                     <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
 
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="name" value="{{ old('name', $hospital->name) }}" required autofocus>
+                        <input type="text" class="form-control" name="name" value="{{ old('name', $hospital->name) }}" autofocus>
+                        @error('name')
+                            <small class="text-muted"> * {{ $message }} </small>
+                        @enderror
                     </div>
+                    
                 </div>
 
                 <div class="form-group row"> 
                     <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
 
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="adress" value="{{ old('adress' , $hospital->adress) }}" required autofocus>
+                        <input type="text" class="form-control" name="adress" value="{{ old('adress' , $hospital->adress) }}" autofocus>
+                        @error('adress')
+                            <small class="text-muted"> * {{ $message }} </small>
+                        @enderror
                     </div>
                 </div>
 
@@ -38,7 +45,10 @@
                     <label for="phone" class="col-md-3 col-form-label text-md-right"> Telefono: </label>
 
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="phone" value="{{ old('phone', $hospital->phone) }}" required autofocus>
+                        <input type="text" class="form-control" name="phone" value="{{ old('phone', $hospital->phone) }}" autofocus>
+                        @error('phone')
+                            <small class="text-muted"> * {{ $message }} </small>
+                        @enderror
                     </div>
                 </div>
    
