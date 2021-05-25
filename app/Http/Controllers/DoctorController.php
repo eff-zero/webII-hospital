@@ -45,6 +45,14 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:doctor|',
+            'adress' => 'required',
+            'phone' => 'required',
+            'years_exp' => 'required',
+            'date' => 'required',
+        ]);
+
         Doctor::create($request->all());
         return redirect()->route('doctor.index');
     }

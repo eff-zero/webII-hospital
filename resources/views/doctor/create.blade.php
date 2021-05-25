@@ -15,15 +15,24 @@
             </x-slot>
 
             <x-slot name="body">
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                <form method="POST" action="{{ route('doctor.store') }}">  
+                <form method="POST" action="{{ route('doctor.store') }}">
                     @csrf
     
                     <div class="form-group row">
                         <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
                         </div>
                     </div>
     
@@ -31,7 +40,7 @@
                         <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autofocus>
+                            <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" autofocus>
                         </div>
                     </div>
     
@@ -39,7 +48,7 @@
                         <label for="phone" class="col-md-3 col-form-label text-md-right"> Telefono: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus>
+                            <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" autofocus>
                         </div>
                     </div>
 
@@ -47,7 +56,7 @@
                         <label for="type_blood" class="col-md-3 col-form-label text-md-right"> Sangre: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="type_blood" value="{{ old('type_blood') }}" required autofocus>
+                            <input type="text" class="form-control" name="type_blood" value="{{ old('type_blood') }}" autofocus>
                         </div>
                     </div>   
                     
@@ -55,7 +64,7 @@
                         <label for="years_exp" class="col-md-3 col-form-label text-md-right"> Años de Experiencia: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="years_exp" value="{{ old('years_exp') }}" required autofocus>
+                            <input type="text" class="form-control" name="years_exp" value="{{ old('years_exp') }}" autofocus>
                         </div>
                     </div>
 
@@ -63,7 +72,7 @@
                         <label for="date" class="col-md-3 col-form-label text-md-right"> Fecha de Nacimiento: </label>
     
                         <div class="col-md-7">
-                            <input type="date" class="form-control" name="date" value="{{ old('date') }}" required autofocus>
+                            <input type="date" class="form-control" name="date" value="{{ old('date') }}" autofocus>
                         </div>
                     </div>
 

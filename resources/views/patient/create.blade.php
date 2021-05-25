@@ -6,6 +6,16 @@
     @section('content')
     <div class="pt-5 container">
 
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('patient.store') }}" method="post">
             @csrf
             
@@ -27,7 +37,7 @@
                                 <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
                                 </div>
                             </div>
             
@@ -35,7 +45,7 @@
                                 <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autofocus>
+                                    <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" autofocus>
                                 </div>
                             </div>
 
@@ -57,7 +67,7 @@
                                 <label for="adress" class="col-md-3 col-form-label text-md-right"> Nombre del Acompañante: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="comp_name" value="{{ old('comp_name') }}" required autofocus>
+                                    <input type="text" class="form-control" name="comp_name" value="{{ old('comp_name') }}" autofocus>
                                 </div>
                             </div>
 
@@ -65,7 +75,7 @@
                                 <label for="adress" class="col-md-3 col-form-label text-md-right"> Tel. Acompañante: </label>
             
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="comp_phone" value="{{ old('comp_phone') }}" required autofocus>
+                                    <input type="text" class="form-control" name="comp_phone" value="{{ old('comp_phone') }}" autofocus>
                                 </div>
                             </div>
 
@@ -103,7 +113,7 @@
                                 <textarea id="my-textarea" class="form-control" name="med_history" rows="2"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="my-textarea"> Motivas de la Consulta </label>
+                                <label for="my-textarea"> Motivos de la Consulta </label>
                                 <textarea id="my-textarea" class="form-control" name="reasons" rows="2"></textarea>
                             </div>
                             <div class="form-group">
