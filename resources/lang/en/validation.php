@@ -137,6 +137,36 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'name' => [
+            'required' => 'El campo nombre es requerido.',
+        ],
+        'adress' => [
+            'required' => 'El campo dirección es requerido.',
+        ],
+        'phone' => [
+            'required' => 'El campo telefono es requerido.',
+        ],
+        'years_exp' => [
+            'required' => 'El campo años de experiencia es requerido.',
+        ],
+        'date' => [
+            'required' => 'El campo fecha de nacimiento es requerido.',
+        ],
+        'comp_name' => [
+            'required' => 'El campo nombre de acompañante es requerido.',
+        ],
+        'comp_phone' => [
+            'required' => 'El campo telefono de acompañante es requerido.',
+        ],
+        'med_history' => [
+            'required' => 'El campo historial medico o antecedentes es requerido.',
+        ],
+        'reasons' => [
+            'required' => 'El campo motivos de la consulta es requerido.',
+        ],
+        'diagnosis' => [
+            'required' => 'El campo diagnostico es requerido.',
+        ],
     ],
 
     /*

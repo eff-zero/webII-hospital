@@ -43,6 +43,11 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {       
+        $validated = $request->validate([
+            'name' => 'required|unique:hospital|',
+            'adress' => 'required|unique:hospital|',
+            'phone' => 'required|unique:hospital|',
+        ]);
         Hospital::create($request->all()); // Agregar hospital por medio del formulario con el $request[POST]
         return redirect()->route('hospital.index'); // Ya registrado el hospital nos vamos a la vista de los medicos
     }

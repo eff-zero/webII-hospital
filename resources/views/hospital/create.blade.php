@@ -17,7 +17,18 @@
                 <h4 class="my-0 font-weight-normal text-center"> Registro de Hospital  </h4>
             </x-slot>
 
+
             <x-slot name="body">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <form method="POST" action="{{ route('hospital.store') }}">  
                     @csrf
@@ -26,7 +37,7 @@
                         <label for="name" class="col-md-3 col-form-label text-md-right"> Nombre: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
                         </div>
                     </div>
     
@@ -34,7 +45,7 @@
                         <label for="adress" class="col-md-3 col-form-label text-md-right"> Dirección: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autofocus>
+                            <input type="text" class="form-control" name="adress" value="{{ old('adress') }}" autofocus>
                         </div>
                     </div>
     
@@ -42,7 +53,7 @@
                         <label for="phone" class="col-md-3 col-form-label text-md-right"> Telefono: </label>
     
                         <div class="col-md-7">
-                            <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus>
+                            <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" autofocus>
                         </div>
                     </div>
 
@@ -68,4 +79,3 @@
         </x-card>
     </div>   
 @endsection
-
